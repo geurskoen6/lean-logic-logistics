@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lean Logic Logistics B.V.</title>
+  <meta name="description" content="Lean Logic Logistics B.V. – logistieke dienstverlening met Lean/Operational Excellence aanpak. Contact en bereikbaarheid." />
+
+  <style>
+    :root{
+      --blue:#1e3aa8;      /* logo-achtig blauw */
+      --blue2:#0f2466;     /* donkerder blauw */
+      --red:#e01313;       /* logo-achtig rood */
+      --bg:#0b0f1a;        /* diepe achtergrond */
+      --card:#0f1627;      /* kaart achtergrond */
+      --text:#e9eefc;
+      --muted:#b7c2e6;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(30,58,168,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(224,19,19,.18), transparent 60%),
+        linear-gradient(180deg, #070a12 0%, var(--bg) 100%);
+      min-height:100vh;
+    }
+
+    a{ color:inherit; }
+    .container{
+      width:min(1100px, calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,18,.55);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+    }
+    .brand .title{
+      line-height:1.1;
+    }
+    .brand .title strong{
+      display:block;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .brand .title span{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:14px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:12px;
+      transition: .18s ease;
+    }
+    nav a:hover{
+      color:var(--text);
+      background: rgba(255,255,255,.06);
+    }
+    .cta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      transition:.18s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      border-color: rgba(224,19,19,.35);
+      background: linear-gradient(135deg, rgba(224,19,19,.22), rgba(30,58,168,.20));
+    }
+
+    /* Hero */
+    .hero{
+      padding:70px 0 42px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-200px -200px auto auto;
+      width:520px; height:520px;
+      background:
+        conic-gradient(from 90deg, rgba(224,19,19,.24), rgba(30,58,168,.26), rgba(224,19,19,.18));
+      filter: blur(22px);
+      border-radius: 50%;
+      opacity:.9;
+      transform: rotate(12deg);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns:1fr; }
+      nav ul{ display:none; }
+    }
+
+    .hero-card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      left:-40px;
+      top:-40px;
+      width:220px;
+      height:220px;
+      background: radial-gradient(circle at 40% 40%, rgba(224,19,19,.22), transparent 65%);
+      filter: blur(12px);
+      pointer-events:none;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing:-.6px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size: 15px;
+      line-height:1.55;
+      max-width: 60ch;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+    }
+
+    .side-card{
+      border:1px solid var(--border);
+      background: rgba(15,22,39,.75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .stripe{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, transparent 0 74%, rgba(224,19,19,.85) 74% 78%, transparent 78% 100%),
+        linear-gradient(180deg, rgba(30,58,168,.55), rgba(30,58,168,.10));
+      opacity:.22;
+      pointer-events:none;
+    }
+    .side-card h3{ margin:0; font-size:14px; color:var(--text); }
+    .side-card p{ margin:0; color:var(--muted); font-size:13px; line-height:1.5; }
+    .mini{
+      display:grid;
+      gap:10px;
+      margin-top:auto;
+    }
+    .mini a{
+      text-decoration:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      transition:.18s ease;
+    }
+    .mini a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
+    .mini small{ color:var(--muted); display:block; font-size:11px; }
+    .mini strong{ font-size:13px; font-weight:600; }
+
+    /* Sections */
+    section{ padding:42px 0; }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom: 16px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .section-title span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .cards{ grid-template-columns:1fr; }
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(15,22,39,.72);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto -80px -80px auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 40% 40%, rgba(30,58,168,.28), transparent 65%);
+      filter: blur(8px);
+      pointer-events:none;
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .contact-grid{ grid-template-columns:1fr; }
+    }
+    .contact-card{
+      border:1px solid var(--border);
+      background: rgba(15,22,39,.72);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+    }
+    .kv{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:flex-start;
+      border-top:1px dashed rgba(255,255,255,.10);
+      padding-top:10px;
+    }
+    .row:first-child{ border-top:none; padding-top:0; }
+    .row span{
+      color:var(--muted);
+      font-size:12px;
+      min-width:120px;
+    }
+    .row strong, .row a{
+      font-size:13px;
+      text-decoration:none;
+      color:var(--text);
+      text-align:right;
+    }
+    .row a:hover{ text-decoration: underline; }
+    .map{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      height: 100%;
+      min-height: 260px;
+      background: rgba(255,255,255,.03);
+    }
+    .map iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--red);
+      box-shadow: 0 0 0 6px rgba(224,19,19,.10);
+      display:inline-block;
+      margin-right:8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <img src="logo__2_-removebg-preview.png" alt="Lean Logic Logistics logo" />
+          <div class="title">
+            <strong>Lean Logic Logistics B.V.</strong>
+            <span>Logistics • Lean • Operational Excellence</span>
+          </div>
+        </a>
+
+        <nav aria-label="Navigatie">
+          <ul>
+            <li><a href="#wat-we-doen">Wat we doen</a></li>
+            <li><a href="#over-ons">Over</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="cta">
+          <a class="btn" href="tel:+31650272308">Bel</a>
+          <a class="btn primary" href="mailto:leanlogiclogistics@ziggo.nl">Mail</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h1>Lean & slimme logistiek. Zonder ruis.</h1>
+            <p class="sub">
+              <!-- VERVANG TEKST HIER -->
+              Voeg hier straks jullie echte intro toe: wat jullie doen, voor wie, en welke resultaten klanten mogen verwachten.
+              Denk aan 2–4 zinnen die meteen duidelijk maken waarom Lean Logic Logistics het verschil maakt.
+            </p>
+
+            <div class="chips" aria-label="Kernpunten">
+              <div class="chip">Procesverbetering</div>
+              <div class="chip">Forecasting & planning</div>
+              <div class="chip">Warehouse & transport</div>
+              <div class="chip">Lean Six Sigma</div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;">
+              <a class="btn primary" href="#contact">Neem contact op</a>
+              <a class="btn" href="#wat-we-doen">Bekijk wat we doen</a>
+            </div>
+          </div>
+
+          <aside class="side-card" aria-label="Snel contact">
+            <div class="stripe"></div>
+            <h3>Direct bereikbaar</h3>
+            <p>
+              Pieter Geurs<br/>
+              <span style="color:var(--muted);">Lean Six Sigma Black Belt</span>
+            </p>
+
+            <div class="mini">
+              <a href="mailto:pieter.geurs@upcmail.nl">
+                <div>
+                  <small>E-mail</small>
+                  <strong>pieter.geurs@upcmail.nl</strong>
+                </div>
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <a href="mailto:leanlogiclogistics@ziggo.nl">
+                <div>
+                  <small>Algemeen</small>
+                  <strong>leanlogiclogistics@ziggo.nl</strong>
+                </div>
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <a href="tel:+31650272308">
+                <div>
+                  <small>Telefoon</small>
+                  <strong>+31 6 50272308</strong>
+                </div>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="wat-we-doen">
+        <div class="section-title">
+          <h2>Wat we doen</h2>
+          <span><!-- VERVANG TEKST HIER -->Korte zin: jullie focus in 1 regel.</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Logistieke procesoptimalisatie</h3>
+            <p><!-- VERVANG TEKST HIER -->Voorbeeld: bottlenecks eruit, doorlooptijd omlaag, kwaliteit omhoog. Beschrijf in 2–3 zinnen.</p>
+          </div>
+          <div class="card">
+            <h3>Planning & forecasting</h3>
+            <p><!-- VERVANG TEKST HIER -->Voorbeeld: betere voorspellingen, minder voorraadstress, hogere leverbetrouwbaarheid.</p>
+          </div>
+          <div class="card">
+            <h3>Lean implementatie & coaching</h3>
+            <p><!-- VERVANG TEKST HIER -->Voorbeeld: tools + gedrag. Geen theoretisch gedoe, wel structureel resultaat.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="over-ons">
+        <div class="section-title">
+          <h2>Over Lean Logic Logistics</h2>
+          <span><!-- VERVANG TEKST HIER -->Korte tagline / missie</span>
+        </div>
+
+        <div class="cards">
+          <div class="card" style="grid-column: 1 / -1;">
+            <h3>Wie we zijn</h3>
+            <p>
+              <!-- VERVANG TEKST HIER -->
+              Plaats hier jullie verhaal: ervaring, type klanten, aanpak, en wat je wel/niet doet.
+              Tip: noem 2–3 concrete resultaten (bijv. % lead time, % waste, service level).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-title">
+          <h2>Contact & bereikbaarheid</h2>
+          <span>Vlaardingen, Nederland</span>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="margin:0 0 8px;">Lean Logic Logistics B.V.</h3>
+            <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
+              Hartmansstraat 73<br/>
+              3135PK Vlaardingen<br/>
+              The Netherlands
+            </p>
+
+            <div class="kv">
+              <div class="row">
+                <span>Telefoon</span>
+                <a href="tel:+31650272308">+31 6 50272308</a>
+              </div>
+              <div class="row">
+                <span>E-mail (Pieter)</span>
+                <a href="mailto:pieter.geurs@upcmail.nl">pieter.geurs@upcmail.nl</a>
+              </div>
+              <div class="row">
+                <span>E-mail (algemeen)</span>
+                <a href="mailto:leanlogiclogistics@ziggo.nl">leanlogiclogistics@ziggo.nl</a>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+              <a class="btn primary" href="mailto:leanlogiclogistics@ziggo.nl?subject=Contact%20via%20website&body=Hoi%2C%0D%0A%0D%0AIk%20wil%20graag%20meer%20informatie%20over%20...%0D%0A%0D%0AMvg%2C">Mail ons</a>
+              <a class="btn" href="tel:+31650272308">Bel ons</a>
+            </div>
+          </div>
+
+          <div class="map" aria-label="Kaart">
+            <!-- Je kunt dit laten staan of later vervangen door een eigen kaart/embed. -->
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Hartmansstraat%2073%203135PK%20Vlaardingen&output=embed"
+              title="Hartmansstraat 73, Vlaardingen">
+            </iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <span class="dot"></span>
+          © <span id="year"></span> Lean Logic Logistics B.V.
+        </div>
+        <div>
+          <a href="#top" style="text-decoration:none; color:var(--muted);">Terug naar boven ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // jaartal automatisch
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
